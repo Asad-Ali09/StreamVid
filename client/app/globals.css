@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.btn {
+  @apply lg:text-lg px-8 py-4 font-bold  flex items-center justify-center gap-1;
+}
+
+.btn-primary {
+  background-image: linear-gradient(
+      248.28deg,
+      #9e61ff 9.539999999999999%,
+      rgba(142, 97, 255, 0.974) 32.8%
+    ),
+    radial-gradient(
+      81.70999999999999% 279.87% at -16.57% -92%,
+      #619bff 28.69%,
+      rgba(205, 219, 248, 0) 69.54000000000001%
+    );
+}
+
+.btn-carousel {
+  @apply absolute top-0 h-full flex items-center justify-center hover:bg-[rgba(0,0,0,0.5)] transition-all duration-300 ease-in-out px-1;
+}
+
+.nav-p-x {
+  @apply px-8 md:px-16 lg:px-32;
+}
+.nav-p-y {
+  @apply md:py-8 py-6;
+}
