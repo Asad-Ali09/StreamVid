@@ -11,6 +11,16 @@
   font-family: "Poppins", sans-serif;
 }
 
+@layer base {
+  body {
+    background-color: #00031c;
+  }
+}
+
+.slick-slide > div {
+  margin: 0 10px;
+}
+
 .btn {
   @apply lg:text-lg px-8 py-4 font-bold  flex items-center justify-center gap-1;
 }
@@ -37,4 +47,48 @@
 }
 .nav-p-y {
   @apply md:py-8 py-6;
+}
+
+.hero-gradient {
+  background-image: linear-gradient(to right, rgb(0, 3, 28) 0%, transparent 50%),
+    linear-gradient(
+      to bottom,
+      rgba(0, 3, 28, 0.7) 0%,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 3, 28) 100%
+    );
+}
+
+.bg-noise::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-size: 200px auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.moviecard {
+  overflow: hidden;
+}
+.moviecard:hover > img {
+  transform: scale(1.25);
+}
+
+.moviecard > div {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+.moviecard:hover > div {
+  opacity: 1;
+  transform: translateY(0);
+}
+.moviecard > button {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.moviecard:hover > button {
+  opacity: 1;
+  transform: translateY(0);
 }

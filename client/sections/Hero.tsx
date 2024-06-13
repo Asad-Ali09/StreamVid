@@ -4,10 +4,12 @@ import { useState } from "react";
 import { FaRegBookmark } from "react-icons/fa";
 import { IoPlayCircleOutline } from "react-icons/io5";
 import { MdOutlineNavigateBefore, MdOutlineNavigateNext } from "react-icons/md";
+import noise from "../public/icons/bg-noise.gif";
 
 const Hero = () => {
-  const tmdbPath = "https://image.tmdb.org/t/p/original";
+  const tmdbPath = process.env.NEXT_PUBLIC_TMDB_IMAGE_URL;
 
+  // TODO: Either fetch from API or Add trailer videos
   const movies = [
     {
       adult: false,
@@ -72,7 +74,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className=" w-[100%] h-screen">
+      <div className="relative w-[100%] h-screen">
         <div className="h-full w-full overflow-hidden flex">
           {movies.map((movie) => {
             return (
@@ -83,13 +85,14 @@ const Hero = () => {
                   translate: `${-100 * index}%`,
                 }}
               >
-                <div
-                  className="absolute top-0 w-full h-full -z-10 bg-no-repeat"
-                  style={{
-                    backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .7) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.7) 100%)`,
-                  }}
-                >
-                  <div className="absolute top-0 left-0 z-10 w-full h-full bg-gradient-to-r from-black to-50% to-transparent"></div>
+                <div className={`absolute top-0 w-full h-full -z-10 `}>
+                  <div className="absolute top-0 left-0 z-10 hero-gradient w-full h-full"></div>
+                  <div
+                    className="absolute top-0 left-0 w-full h-full"
+                    style={{
+                      backgroundImage: `url(${noise.src})`,
+                    }}
+                  ></div>
                   <img
                     src={`${tmdbPath}${movie.backdrop_path}`}
                     alt="Movie backdrop image"
@@ -105,11 +108,11 @@ const Hero = () => {
                     {truncateText(movie.overview, 110)}
                   </p>
                   <div className="flex flex-col items-stretch sm:items-center sm:flex-row gap-2 mt-8">
-                    <button className="btn btn-primary rounded-xl">
+                    <button className="btn btn-primary rounded-xl hover:-translate-y-2 hover:shadow-[0_15px_40px_-8px_#9e61ff80] transition-all duration-300">
                       Play Now
                       <IoPlayCircleOutline size={24} />
                     </button>
-                    <button className="btn border border-white rounded-xl">
+                    <button className="btn border sm:border-none border-white rounded-xl hover:border-btnBgColor3 hover:text-btnBgColor3 transition-all duration-300">
                       Watch Later
                       <FaRegBookmark size={24} />
                     </button>
