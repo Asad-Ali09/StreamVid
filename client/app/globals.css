@@ -14,6 +14,7 @@
 @layer base {
   body {
     background-color: #00031c;
+    color: #fff;
   }
 }
 
@@ -91,4 +92,13 @@
 .moviecard:hover > button {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Tooltip */
+.tooltip {
+  @apply invisible absolute bg-textlight text-white text-xs mt-16;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
 }

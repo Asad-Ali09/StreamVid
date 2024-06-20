@@ -4,9 +4,10 @@ import {
   getTrendingMedia,
 } from "@/store/features/movies/moviesServices";
 import { MixedMedia, MovieT, ShowT } from "@/types";
-import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import MovieCard from "./MovieCard";
+import { useEffect, useMemo, useState } from "react";
+import Loading from "./Loading";
 
 const MovieSlider = ({ type }: { type: string }) => {
   const [movies, setMovies] = useState<MovieT[] | ShowT[] | MixedMedia[]>([]);
@@ -24,15 +25,19 @@ const MovieSlider = ({ type }: { type: string }) => {
       }
     };
     getData();
-  }, []);
+  }, [type]);
 
   return (
     <div className="slider-container">
-      <Slider {...settings}>
-        {movies.map((movie) => {
-          return <MovieCard key={movie.id} movie={movie} />;
-        })}
-      </Slider>
+      {movies.length === 0 ? (
+        <Loading />
+      ) : (
+        <Slider {...settings}>
+          {movies.map((movie) => {
+            return <MovieCard key={movie.id} movie={movie} />;
+          })}
+        </Slider>
+      )}
     </div>
   );
 };
@@ -45,7 +50,7 @@ let settings = {
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 2,
-  centerMode: true,
+  // centerMode: true,
   centerPadding: "10px",
   autoplay: true,
   autoplaySpeed: 4000,

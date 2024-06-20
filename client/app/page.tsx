@@ -1,11 +1,8 @@
-"use client";
-
 import { Hero } from "@/sections";
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import { movieSlides } from "@/constants";
+import "slick-carousel/slick/slick.css";
 import { MovieSlider } from "@/components";
+import { movieSlides } from "@/constants";
 
 export default function Home() {
   return (

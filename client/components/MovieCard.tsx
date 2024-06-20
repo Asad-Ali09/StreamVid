@@ -2,18 +2,23 @@ import React from "react";
 import { mapGenreIdToName } from "@/utils/mapToGenre";
 import { IoMdAdd } from "react-icons/io";
 import { MovieT, ShowT } from "@/types";
+import Link from "next/link";
 
 const tmdb_image = process.env.NEXT_PUBLIC_TMDB_IMAGE_URL;
-const MovieCard = ({ movie }: { movie: MovieT | ShowT }) => {
-  const isShow = (movie: MovieT | ShowT): movie is ShowT => {
-    return (movie as ShowT).original_name !== undefined;
-  };
 
+const getMovieDisplayLink = (mediaType: string, id: number) => {
+  return `/display?mediaType=${mediaType}&id=${id}`;
+};
+const isShow = (movie: MovieT | ShowT): movie is ShowT => {
+  return (movie as ShowT).original_name !== undefined;
+};
+
+const MovieCard = ({ movie }: { movie: MovieT | ShowT }) => {
   return (
     <div className="rounded-xl md:max-w-[320px] h-[550px] text-white">
       <div className="rounded-xl h-[80%] w-full relative moviecard ">
         <img
-          src={`${tmdb_image}${movie.backdrop_path}`}
+          src={`${tmdb_image}${movie.poster_path}`}
           alt="Movie Image"
           className="block object-cover rounded-xl w-full h-full transition-transform duration-500 ease-in-out"
         />
@@ -25,9 +30,15 @@ const MovieCard = ({ movie }: { movie: MovieT | ShowT }) => {
         </button>
         <div className="absolute bottom-0 pb-4 w-full h-full flex flex-col px-2 gap-2 items-center justify-end text-center bg-gradient-to-t from-navBgColor to-transparent">
           <p className="font-semibold text-2xl text-center cursor-pointer hover:text-btnBgColor3 ">
-            {isShow(movie)
-              ? movie.original_name || movie.name
-              : movie.original_title}
+            {isShow(movie) ? (
+              <Link href={getMovieDisplayLink("tv", movie.id)}>
+                {movie.name || movie.original_name}
+              </Link>
+            ) : (
+              <Link href={getMovieDisplayLink("movie", movie.id)}>
+                {movie.title || movie.original_title}
+              </Link>
+            )}
           </p>
           <p className=" font-light">
             {isShow(movie)
@@ -40,9 +51,15 @@ const MovieCard = ({ movie }: { movie: MovieT | ShowT }) => {
         </div>
       </div>
       <p className="mt-4 font-semibold tracking-wide cursor-pointer hover:text-btnBgColor3">
-        {isShow(movie)
-          ? movie.original_name || movie.name
-          : movie.original_title}
+        {isShow(movie) ? (
+          <Link href={getMovieDisplayLink("tv", movie.id)}>
+            {movie.name || movie.original_name}
+          </Link>
+        ) : (
+          <Link href={getMovieDisplayLink("movie", movie.id)}>
+            {movie.title || movie.original_title}
+          </Link>
+        )}
       </p>
       <p className="mt-2 font-light text-textlight">
         {isShow(movie)
