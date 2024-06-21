@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import errorhandler from "./middlewares/errorHandler";
+import notFound from "./middlewares/notFound";
 
 dotenv.config();
 
@@ -25,6 +27,11 @@ app.get("/", (req: Request, res: Response) => {
   res.status(200).send("Hello World!");
 });
 
+// Erro handling
+app.use(errorhandler);
+app.use(notFound);
+
+// Start Application
 mongoose
   .connect(process.env.MONGO_URI!)
   .then(() => {
