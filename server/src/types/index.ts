@@ -5,6 +5,7 @@ export interface IUser extends Document {
   readonly email: string;
   password: string;
   profilePicture?: string;
+  watchLater: watchLaterItemT[];
   createJWT(): string;
   toResponseObject(): Omit<IUser, "password">;
   comparePassword(candidatePassword: string): Promise<boolean>;
@@ -13,4 +14,9 @@ export interface IUser extends Document {
 export type TokenType = {
   userID: mongoose.Types.ObjectId;
   email: string;
+};
+
+export type watchLaterItemT = {
+  mediaType: "tv" | "movie";
+  mediaID: number;
 };

@@ -17,7 +17,10 @@ const authMiddleware = async (
 
   // Verify the token
   const decoded = jwt.verify(token, process.env.JWT_SECRET!) as TokenType;
-  const user = await UserModel.findById(decoded.userID).select("-password");
+  const user = await UserModel.findById(decoded.userID).select(
+    "-password -watchLater"
+  );
+
   if (!user) {
     throw new customError(401, "Not Authorized. Please Login");
   }

@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import errorhandler from "./middlewares/errorHandler";
 import notFound from "./middlewares/notFound";
 import UserRoutes from "./routes/User.route";
+import watchLaterRoutes from "./routes/WatchLater.route";
 
 dotenv.config();
 
@@ -36,6 +37,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/user", UserRoutes);
+app.use("/watch-later", watchLaterRoutes);
 
 // Erro handling
 app.use(errorhandler);

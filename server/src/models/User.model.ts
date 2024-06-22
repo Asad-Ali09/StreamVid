@@ -27,6 +27,22 @@ const UserSchema = new Schema<IUser>({
     minlength: [6, "Password must be at least 6 characters"],
   },
   profilePicture: String,
+  watchLater: {
+    type: [
+      {
+        mediaType: {
+          type: String,
+          required: true,
+          enum: ["tv", "movie"],
+        },
+        mediaID: {
+          type: Number,
+          required: true,
+        },
+      },
+    ],
+    default: [],
+  },
 });
 
 UserSchema.pre("save", async function (next) {
