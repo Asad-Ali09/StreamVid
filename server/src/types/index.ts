@@ -16,7 +16,21 @@ export type TokenType = {
   email: string;
 };
 
+type mediaTypeT = "tv" | "movie";
+
 export type watchLaterItemT = {
-  mediaType: "tv" | "movie";
+  mediaType: mediaTypeT;
   mediaID: number;
 };
+
+export interface IComment extends Document {
+  user: mongoose.Types.ObjectId;
+  comment: string;
+  mediaType: mediaTypeT;
+  mediaID: number;
+}
+
+export interface ICommentShow extends IComment {
+  episode: number;
+  season: number;
+}

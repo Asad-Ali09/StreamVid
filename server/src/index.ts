@@ -8,6 +8,7 @@ import errorhandler from "./middlewares/errorHandler";
 import notFound from "./middlewares/notFound";
 import UserRoutes from "./routes/User.route";
 import watchLaterRoutes from "./routes/WatchLater.route";
+import CommentRoutes from "./routes/Comment.route";
 
 dotenv.config();
 
@@ -38,6 +39,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/user", UserRoutes);
 app.use("/watch-later", watchLaterRoutes);
+app.use("/comment", CommentRoutes);
 
 // Erro handling
 app.use(errorhandler);
