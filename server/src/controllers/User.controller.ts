@@ -42,7 +42,7 @@ const signUp = async (req: Request<{}, {}, IUser>, res: Response) => {
 };
 
 const login = async (
-  req: Request<{}, {}, Omit<IUser, "name | profilePicture">>,
+  req: Request<{}, {}, { email: string; password: string }>,
   res: Response
 ) => {
   const { email, password } = req.body;

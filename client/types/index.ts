@@ -113,3 +113,24 @@ export type DisplayProps = {
 export type WatchProps = {
   searchParams: searchParams;
 };
+
+// Auth ------------
+
+export type User = {
+  name: string;
+  email: string;
+  profilePicture: string;
+};
+
+export type loginDataType = {
+  email: string;
+  password: string;
+};
+export type SignUpDataType = loginDataType & {
+  name: string;
+};
+
+export type loginReturnType = {
+  message: string;
+  data: User;
+};

@@ -1,5 +1,5 @@
 import { MoviesDisplay } from "@/sections";
-import { getMovieDetails } from "@/store/features/movies/moviesServices";
+import { getMovieDetails } from "@/features/moviesServices";
 import { DisplayProps } from "@/types";
 
 const MovieDisplay = async ({ searchParams }: DisplayProps) => {

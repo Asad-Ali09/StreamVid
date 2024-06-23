@@ -1,5 +1,5 @@
 import { DoughnutChart } from "@/components";
-import { isShow } from "@/store/features/movies/moviesServices";
+import { isShow } from "@/features/moviesServices";
 import { SMovieT, SShowT } from "@/types";
 import Link from "next/link";
 import React from "react";

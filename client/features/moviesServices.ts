@@ -17,7 +17,7 @@ const headers = {
 };
 
 const getMovies = async ({ type }: { type: string }) => {
-  console.log("ready to call api");
+
   const url = `${base_url}/movie/${type}`;
 
   const params = {

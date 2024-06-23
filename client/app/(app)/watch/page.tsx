@@ -1,7 +1,4 @@
-import {
-  getMovieDetails,
-  isShow,
-} from "@/store/features/movies/moviesServices";
+import { getMovieDetails, isShow } from "@/features/moviesServices";
 import { WatchProps, searchParams } from "@/types";
 import React from "react";
 

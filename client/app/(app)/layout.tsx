@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 import { Navbar } from "@/components";
+import { AuthProvider } from "@/context/AuthProvider";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "StreamVid",
@@ -16,8 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="max-w-[1920px] relative mx-auto">
-        <Navbar />
-        {children}
+        <AuthProvider>
+          <Navbar />
+          {children}
+        </AuthProvider>
+        <Toaster />
       </body>
     </html>
   );

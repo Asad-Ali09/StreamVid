@@ -15,12 +15,19 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        primary: "rgb(108, 82, 238)",
+        primary: {
+          DEFAULT: "rgb(108, 82, 238)",
+          70: "rgba(108, 82, 238, 0.7)",
+        },
         textlight: "#cccdd2",
         btnBgColor: "#9e61ff",
         btnBgColor2: "#619bff",
         btnBgColor3: "#6c52ee",
-        navBgColor: "#00031C",
+        navBgColor: {
+          DEFAULT: "#00031C",
+          70: "rgba(0, 3, 28, 0.7)",
+          50: "rgba(0, 3, 28, 0.7)",
+        },
       },
     },
   },

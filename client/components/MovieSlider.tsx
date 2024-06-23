@@ -1,8 +1,5 @@
 "use client";
-import {
-  getMovies,
-  getTrendingMedia,
-} from "@/store/features/movies/moviesServices";
+import { getMovies, getTrendingMedia } from "@/features/moviesServices";
 import { MixedMedia, MovieT, ShowT } from "@/types";
 import Slider from "react-slick";
 import MovieCard from "./MovieCard";
